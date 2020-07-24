@@ -1,0 +1,44 @@
+{% extends "base.html" %} {% load static %}
+<!--  -->
+{% block title %} Profile {% endblock %}
+<!--  -->
+{% block content %}
+<div class="card mb-3">
+  <div class="row no-gutters">
+    <div class="col-md-3 d-flex justify-content-center align-items-center">
+      <img
+        src="{{ user.profile.profile_image.url }}"
+        class="card-img p-2"
+        alt="..."
+      />
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title m-0">
+          {% if user.profile.first_name and user.profile.last_name %}
+          {{user.profile.first_name}} {{user.profile.last_name}}
+          <!--  -->
+          {% endif %} (<small class="text-muted">{{user.username}}</small>)
+        </h5>
+
+        <p class="card-text mt-2">
+          {% if user.profile.description %} {{user.profile.description}}
+        </p>
+        {% endif %}
+        <p class="card-text">
+          <small class="text-muted">{{user.email}}</small>
+        </p>
+      </div>
+    </div>
+    <div class="col-md-1 p-3 edit-div">
+      <a href="{% url 'edit-profile' %}">
+        <img
+          src="https://image.flaticon.com/icons/svg/526/526127.svg"
+          alt=""
+          class="edit-icon"
+        />
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

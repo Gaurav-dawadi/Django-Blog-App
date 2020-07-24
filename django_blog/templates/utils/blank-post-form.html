@@ -1,0 +1,17 @@
+<div class="card mb-4">
+  <div class="card-body p-1">
+    <h6 class="p-2">Add a post</h6>
+    <form class="form-group d-flex flex-column my-1" method="POST">
+      {% csrf_token %}
+      <textarea
+        type="text"
+        aria-label="post input"
+        class="form-control mb-2 border-top-0 border-left-0 border-right-0"
+        placeholder="Write something..."
+      ></textarea>
+      <button class="btn btn-info w-25 btn-sm ml-auto" type="submit">
+        Post
+      </button>
+    </form>
+  </div>
+</div>

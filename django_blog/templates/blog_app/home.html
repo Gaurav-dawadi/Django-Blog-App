@@ -1,0 +1,86 @@
+{% extends "base.html" %} {% load static %}
+<!--  -->
+{% block title %} Blog {% endblock %}
+<!--  -->
+{% block content %}
+<div class="blog-home">
+  <div class="create-post mb-3">
+    <a href="{% url 'create-post' %}" class="create-post-hyperlink">
+      <img src="{% static 'Images/create_post.svg' %}" alt="" class="mr-4" />
+    </a>
+    <h5 class="ml-4 d-flex align-items-center">Write something...</h5>
+  </div>
+  {% for post in posts %}
+  <div class="card mb-3 card-div">
+    <div class="d-flex justify-content-between p-2">
+      <div>
+        <img
+          src="{{ post.author.profile.profile_image.url }}"
+          alt=""
+          class="home-profile-image"
+        />
+        <a href="{% url 'post-detail' pk=post.id %}">
+          <h5 class="post-title">{{post.post_title}}</h5>
+        </a>
+      </div>
+      <hr />
+    </div>
+    <div class="card-body">
+      <p class="card-text">
+        {{post.post_text}}
+      </p>
+    </div>
+    <div class="card-footer text-muted post-card-footer">
+      <div>
+        Posted By:<a href="{% url 'all-post-of-user' username=post.author %}">
+          {{post.author}} </a
+        >&nbsp
+        <span class="text-muted">{{post.posted_date|date:"d M, Y"}}</span>
+      </div>
+      {% if user == post.author %}
+      <div class="post-options">
+        <a href="{% url 'update-post' pk=post.id %}">
+          <img
+            src="https://image.flaticon.com/icons/svg/526/526127.svg"
+            alt=""
+          />
+        </a>
+        <a href="{% url 'delete-post' pk=post.id %}">
+          <img
+            src="https://image.flaticon.com/icons/svg/1214/1214926.svg"
+            alt=""
+          />
+        </a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+{% if is_paginated %}
+<div class="pagination d-flex justify-content-center">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1" class="btn btn-info">
+      First
+    </a>
+    <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-info">
+      Previous
+    </a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}" class="btn btn-info">
+      Next
+    </a>
+    <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-info">
+      Last
+    </a>
+    {% endif %}
+  </span>
+</div>
+{% endif %} {% endblock %}

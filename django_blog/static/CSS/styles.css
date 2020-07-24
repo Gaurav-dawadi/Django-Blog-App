@@ -1,0 +1,69 @@
+.home-profile-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+.post-title {
+  display: inline;
+  margin-left: 0.5rem;
+}
+.post-card-footer {
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.edit-div {
+  background-color: teal;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.edit-icon {
+  z-index: 10;
+}
+.navbar {
+  background-color: teal;
+}
+.profile {
+  display: inline;
+  margin-right: 0.5rem;
+  color: white;
+}
+
+.card-img {
+  height: 120px;
+  width: 120px;
+  border-radius: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+a:hover {
+  color: teal;
+  text-decoration: none;
+}
+
+.create-post {
+  height: 5rem;
+  display: flex;
+}
+.create-post IMG {
+  height: 100%;
+}
+.post-options {
+  display: flex;
+  justify-content: flex-end;
+}
+.post-options img {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.8rem;
+}
+
+.card-div {
+  overflow: hidden;
+}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+<!--  -->
+{% block title %} {{post.post_title}} {% endblock title %}
+<!--  -->
+{% block content %}
+<div class="card mb-3">
+  <div class="d-flex justify-content-between p-2">
+    <div>
+      <img
+        src="{{ post.author.profile.profile_image.url }}"
+        alt=""
+        class="home-profile-image"
+      />
+      <h5 class="post-title">{{post.post_title}}</h5>
+    </div>
+    <hr />
+  </div>
+  <div class="card-body">
+    <p class="card-text">
+      {{post.post_text}}
+    </p>
+  </div>
+  <div class="card-footer text-muted post-card-footer">
+    <div>
+      Posted By: {{post.author}} &nbsp
+      <span class="text-muted">{{post.posted_date|date:"d M, Y"}}</span>
+    </div>
+    {% if user == post.author %}
+    <div class="post-options">
+      <a href="{% url 'update-post' pk=post.id %}">
+        <img src="https://image.flaticon.com/icons/svg/526/526127.svg" alt="" />
+      </a>
+      <a href="{% url 'delete-post' pk=post.id %}">
+        <img
+          src="https://image.flaticon.com/icons/svg/1214/1214926.svg"
+          alt=""
+        />
+      </a>
+    </div>
+    {% endif %}
+  </div>
+</div>
+
+{% endblock content %}

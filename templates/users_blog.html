@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %} <title>All Blog of User</title> {% endblock %}
+
+{% block main %}
+
+    <div class="container m-5">
+        Here goes all blogs of {{user}}
+        <ul>
+            {% for post in posts %}
+            <li>{{post}}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="{% url 'blog:home' %}">Back</a>
+    </div>
+
+{% endblock %}

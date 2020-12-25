@@ -14,7 +14,10 @@
             </div>
         </div>
 
-        <a href="{% url 'blog:update' post.id %}" class="btn btn-success">Update</a>
+        {% if user == post.author %}
+            <a href="{% url 'blog:update' post.id %}" class="btn btn-success">Update</a>
+            <a href="{% url 'blog:delete' post.id %}" class="btn btn-danger">Delete</a>
+        {% endif %}
 
         <a href="{% url 'blog:home' %}" class="btn btn-warning">Back</a>
     </div>

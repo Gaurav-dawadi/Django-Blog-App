@@ -21,23 +21,22 @@ class TestUrls(TestCase):
         # url = reverse('blog:home')
         # self.assertEqual(resolve(url).func.view_class, HomeView)
         response = self.client.get(reverse('blog:home'))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
 
     def test_create_url(self):
         # url = reverse('blog:create')
         # self.assertEqual(resolve(url).func.view_class, PostCreateView)
         response = self.client.get(reverse('blog:create'))
-        self.assertEqual(response.status_code, 200)    
+        self.assertEqual(response.status_code, 302)    
 
     def test_detail_url(self):
         response = self.client.get(reverse('blog:detail', args=['some-slug']))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         # url = reverse('blog:detail', args=['some-slug'])
         # self.assertEqual(resolve(url).func.view_class, PostDetailView)  
 
     def test_update_url(self):
         response = self.client.get(reverse('blog:detail', args=[1]))
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 302)
         # url = reverse('blog:update', args=[1])
         # self.assertEqual(resolve(url).func.view_class, PostUpdateView)      
-    
